@@ -16,16 +16,19 @@ const LoginForm = ({ onClose, setUserName }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:3001/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      });
+      const response = await fetch(
+        "https://python-disease-backend.vercel.app/api/users/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        }
+      );
       const responseData = await response.json();
       auth.login(
         responseData.userId,

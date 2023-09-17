@@ -216,20 +216,23 @@ function Form() {
     };
 
     try {
-      const response = await fetch("http://localhost:3001/api/user", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: name,
-          age: age,
-          date: new Date().toLocaleDateString(),
-          symptoms: selectedItems.join(","),
-          disease: predictedDisease,
-          user: auth.userId,
-        }),
-      });
+      const response = await fetch(
+        "https://python-disease-backend.vercel.app/api/user",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name,
+            age: age,
+            date: new Date().toLocaleDateString(),
+            symptoms: selectedItems.join(","),
+            disease: predictedDisease,
+            user: auth.userId,
+          }),
+        }
+      );
     } catch (error) {
       console.error("API Error:", error);
     }

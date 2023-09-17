@@ -45,9 +45,12 @@ export default function Record(props) {
   const getRecords = async () => {
     const userId = auth.userId;
     try {
-      let response = await fetch(`http://localhost:3001/api/users/${userId}`, {
-        method: "GET",
-      });
+      let response = await fetch(
+        `https://python-disease-backend.vercel.app/api/users/${userId}`,
+        {
+          method: "GET",
+        }
+      );
       const responseData = await response.json();
       setRecordData(responseData);
     } catch (error) {

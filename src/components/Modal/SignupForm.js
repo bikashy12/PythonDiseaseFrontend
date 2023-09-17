@@ -18,18 +18,21 @@ const SignupForm = ({ onClose }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:3001/api/users/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: name,
-          age: age,
-          email: email,
-          password: password,
-        }),
-      });
+      const response = await fetch(
+        "https://python-disease-backend.vercel.app/api/users/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name,
+            age: age,
+            email: email,
+            password: password,
+          }),
+        }
+      );
       const responseData = await response.json();
       auth.login(responseData.userId, responseData.token, responseData.name);
 
